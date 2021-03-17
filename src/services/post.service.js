@@ -15,11 +15,11 @@ export default class PostService {
 
         for (let post of posts) {
             for (const user of users.data) {
-                if(user.id === post.userId)
-                    post.user =user;
+                if (user.id === post.userId)
+                    post.user = user;
             }
         }
-        
+
         return posts;
     }
     /**
@@ -31,18 +31,28 @@ export default class PostService {
         return await axios.post(`${baseUrl}/posts`, data)
     }
     /**
-     * Details of port
+     * Details of post
      * @param {*} id 
      * @returns 
      */
     static async details(id) {
         return await axios.get(`${baseUrl}/posts/${id}`)
     }
-
+    /**
+     * Update of post
+     * @param  id 
+     * @param  data 
+     * @returns 
+     */
     static async update(id, data) {
         return await axios.put(`${baseUrl}/posts/${id}`, data)
     }
 
+    /**
+     * Delete of post
+     * @param  id 
+     * @returns 
+     */
     static async delete(id) {
         return await axios.delete(`${baseUrl}/posts/${id}`)
     }
